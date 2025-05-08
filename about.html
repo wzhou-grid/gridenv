@@ -23,7 +23,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  fetch('_includes/header.html')
+    document.addEventListener('DOMContentLoaded', function () {
+    const foundedYear = 2015;
+    const currentYear = new Date().getFullYear();
+    document.getElementById('year').innerText = currentYear - foundedYear;
+
+      fetch('_includes/header.html')
   .then(res => {
     if (!res.ok) throw new Error('Header load failed');
     return res.text();
@@ -34,6 +39,7 @@
   .catch(err => {
     console.error('Error loading header:', err);
     document.getElementById('header').innerHTML = '<div class="bg-danger text-white p-2">Failed to load header.</div>';
+  });
   });
 
 </script>
